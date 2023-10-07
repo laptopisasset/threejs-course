@@ -11,7 +11,7 @@ scene.add(mesh);
 console.log(mesh.position.length());
 
 // Axes helper
-const axesHelper = new THREE.AxesHelper();
+const axesHelper = new THREE.AxesHelper(3);
 scene.add(axesHelper);
 
 const sizes = {
