@@ -10,12 +10,18 @@ scene.add(mesh);
 
 console.log(mesh.position.length());
 
+// Axes helper
+const axesHelper = new THREE.AxesHelper();
+scene.add(axesHelper);
+
 const sizes = {
   width: 800,
   height: 600,
 };
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 camera.position.z = 3;
+camera.position.y = 1;
+camera.position.x = 1;
 scene.add(camera);
 
 console.log(mesh.position.distanceTo(camera.position));
