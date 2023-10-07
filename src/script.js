@@ -11,6 +11,7 @@ mesh.scale.x = 2;
 mesh.scale.y = 0.5;
 mesh.scale.z = 0.5;
 
+mesh.rotation.reorder("YXZ");
 mesh.rotateX(Math.PI * 0.25);
 mesh.rotation.y = Math.PI * 0.25;
 
