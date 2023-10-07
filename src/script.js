@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import gsap from "gsap";
 
 const scene = new THREE.Scene();
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -22,14 +23,11 @@ renderer.setSize(sizes.width, sizes.height);
 
 const clock = new THREE.Clock();
 
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 });
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 });
+
 // Animation
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
-
-  camera.position.y = Math.sin(elapsedTime);
-  camera.position.x = Math.cos(elapsedTime);
-  camera.lookAt(mesh.position);
-
   renderer.render(scene, camera);
 
   window.requestAnimationFrame(tick);
