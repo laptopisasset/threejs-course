@@ -27,10 +27,12 @@
     "portfinder-sync": "^0.0.2",
     "raw-loader": "^4.0.2",
     "style-loader": "^3.3.3",
-    "three": "^0.157.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "three": "^0.157.0"
   }
 }
