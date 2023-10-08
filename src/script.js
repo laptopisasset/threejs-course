@@ -3,6 +3,9 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as dat from "dat.gui";
 import gsap from "gsap";
+import imageColor from "../static/textures/door/color.jpg";
+
+console.log(imageColor);
 
 const gui = new dat.GUI({ closed: true, width: 400 });
 const parameters = {
@@ -92,13 +95,6 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
-  // mesh.rotation.y = elapsedTime;
-
-  // Update camera
-  // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
-  // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
-  // camera.position.y = cursor.y * 5;
-  // camera.lookAt(mesh.position);
   controls.update();
 
   renderer.render(scene, camera);

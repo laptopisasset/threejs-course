@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/scripts.js",
   "scripts": {
-    "build": "webpack --config ./bundler/webpack.prod.js",
+    "build": "webpack --config ./bundler/webpack.prod.mjs",
     "dev": "webpack serve --config ./bundler/webpack.dev.mjs",
     "clean": "rm -rf node_modules"
   },
