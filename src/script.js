@@ -1,27 +1,33 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as dat from "dat.gui";
+import gsap from "gsap";
+
+const gui = new dat.GUI({ closed: true, width: 400 });
+const parameters = {
+  color: 0xff0000,
+  spin: () => {
+    gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + 2 * Math.PI });
+  },
+};
 
 const canvas = document.querySelector(".webgl");
 
 const scene = new THREE.Scene();
-// const geometry = new THREE.BoxGeometry(1, 1, 1, 4, 4, 4);
-const geometry = new THREE.BufferGeometry();
-const count = 5000;
-const positionArray = new Float32Array(count * 3 * 3).map(
-  () => (Math.random() - 0.5) * 4
-);
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 
-const positionsAttribute = new THREE.BufferAttribute(positionArray, 3);
-geometry.setAttribute("position", positionsAttribute);
-
-const material = new THREE.MeshBasicMaterial({
-  color: 0xff0000,
-  wireframe: true,
-});
+const material = new THREE.MeshBasicMaterial({ color: parameters.color });
 const mesh = new THREE.Mesh(geometry, material);
-
 scene.add(mesh);
+
+gui.add(mesh.position, "y").min(-3).max(3).step(0.01).name("elevation");
+gui.add(mesh, "visible");
+gui.add(material, "wireframe");
+gui.addColor(parameters, "color").onChange(() => {
+  material.color.set(parameters.color);
+});
+gui.add(parameters, "spin");
 
 const sizes = {
   width: window.innerWidth,
