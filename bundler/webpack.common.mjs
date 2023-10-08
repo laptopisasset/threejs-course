@@ -1,7 +1,7 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import path from "path";
-import { dirname } from "path";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -10,10 +10,13 @@ export default {
   entry: path.resolve(path.join(__dirname, "..", "src", "script.js")),
   output: {
     filename: "bundle.[contenthash].js",
-    path: path.resolve(path.join(__dirname, "dist")),
+    path: path.resolve(path.join(__dirname, "..", "dist")),
   },
   devtool: "source-map",
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.resolve(path.join(__dirname, "..", "static")) }],
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(path.join(__dirname, "..", "src", "index.html")),
       minify: true,
